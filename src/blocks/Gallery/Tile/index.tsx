@@ -20,7 +20,7 @@ export const Tile: React.FC<Gallery> = (props) => {
             />
           </a>
           {item.link?.label && (
-            <h3 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-background">
+            <h3 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl text-white">
               {item.link.label}
             </h3>
           )}
