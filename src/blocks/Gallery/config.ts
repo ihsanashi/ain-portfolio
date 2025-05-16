@@ -35,11 +35,24 @@ export const Gallery: Block = {
       },
     },
     {
+      name: 'disableLabel',
+      label: 'Disable link labels',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        condition: (_, {}, { blockData }) => {
+          return blockData?.type === 'tiles';
+        },
+        description:
+          "If checked, the label for each link will be hidden. For example, you'd probably want to disable labels for a gallery of Instagram posts.",
+      },
+    },
+    {
       name: 'content',
       label: 'Content',
       type: 'array',
       required: true,
-      // minRows: 3, // ! Re-enforce later after testing
+      // minRows: 3, // ! TODO Re-enforce later after testing
       admin: {
         description: 'Specify content to display in this section',
       },
