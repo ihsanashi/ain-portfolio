@@ -1,3 +1,5 @@
+'use client';
+
 import { Media } from '@/components/Media';
 import {
   Carousel,
@@ -8,6 +10,7 @@ import {
 } from '@/components/ui/carousel';
 import { MediaSlider as MediaSliderProps } from '@/payload-types';
 import React from 'react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 type Props = MediaSliderProps;
 
@@ -20,6 +23,7 @@ export const MediaSlider: React.FC<Props> = (props) => {
       opts={{
         loop: true,
       }}
+      plugins={[WheelGesturesPlugin()]}
     >
       <CarouselContent>
         {slides.map((slide, index) => (
