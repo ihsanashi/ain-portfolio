@@ -167,7 +167,7 @@ export interface Page {
     } | null;
     links?:
       | {
-          link: {
+          link?: {
             type?: ('reference' | 'custom') | null;
             newTab?: boolean | null;
             reference?:
@@ -180,7 +180,7 @@ export interface Page {
                   value: number | Post;
                 } | null);
             url?: string | null;
-            label: string;
+            label?: string | null;
             /**
              * Choose how the link should be rendered.
              */
@@ -441,7 +441,7 @@ export interface CallToActionBlock {
   } | null;
   links?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -454,7 +454,7 @@ export interface CallToActionBlock {
                 value: number | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
@@ -504,7 +504,7 @@ export interface ContentBlock {
                 value: number | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
           /**
            * Choose how the link should be rendered.
            */
@@ -727,6 +727,10 @@ export interface Gallery {
    */
   type: 'canvas' | 'postcard' | 'tiles' | 'twoColumns';
   /**
+   * If checked, the label for each link will be hidden. For example, you'd probably want to disable labels for a gallery of Instagram posts.
+   */
+  disableLabel?: boolean | null;
+  /**
    * Specify content to display in this section
    */
   content: {
@@ -744,7 +748,7 @@ export interface Gallery {
             value: number | Post;
           } | null);
       url?: string | null;
-      label: string;
+      label?: string | null;
       /**
        * Choose how the link should be rendered.
        */
@@ -1167,6 +1171,7 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface GallerySelect<T extends boolean = true> {
   type?: T;
+  disableLabel?: T;
   content?:
     | T
     | {
@@ -1631,7 +1636,7 @@ export interface Header {
   id: number;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1644,7 +1649,7 @@ export interface Header {
                 value: number | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
         };
         id?: string | null;
       }[]
@@ -1660,7 +1665,7 @@ export interface Footer {
   id: number;
   navItems?:
     | {
-        link: {
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1673,7 +1678,7 @@ export interface Footer {
                 value: number | Post;
               } | null);
           url?: string | null;
-          label: string;
+          label?: string | null;
         };
         id?: string | null;
       }[]
