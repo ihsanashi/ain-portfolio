@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Media } from '@/components/Media';
 import {
   Carousel,
@@ -8,14 +9,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { MediaSlider as MediaSliderProps } from '@/payload-types';
-import React from 'react';
+import { Gallery } from '@/payload-types';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
-type Props = MediaSliderProps;
-
-export const MediaSlider: React.FC<Props> = (props) => {
-  const { slides } = props;
+export const Slider: React.FC<Gallery> = (props) => {
+  const { content } = props;
 
   return (
     <Carousel
@@ -26,7 +24,7 @@ export const MediaSlider: React.FC<Props> = (props) => {
       plugins={[WheelGesturesPlugin()]}
     >
       <CarouselContent>
-        {slides.map((slide, index) => (
+        {content.map((slide, index) => (
           <CarouselItem
             className="flex items-center justify-center"
             key={index}
@@ -39,8 +37,12 @@ export const MediaSlider: React.FC<Props> = (props) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
-      <CarouselNext className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+      {content.length > 1 && (
+        <CarouselPrevious className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+      )}
+      {content.length > 1 && (
+        <CarouselNext className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+      )}
     </Carousel>
   );
 };

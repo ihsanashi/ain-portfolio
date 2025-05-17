@@ -191,7 +191,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (ArchiveBlock | CallToActionBlock | ContentBlock | FormBlock | Gallery | MediaBlock | MediaSlider)[];
+  layout: (ArchiveBlock | CallToActionBlock | ContentBlock | FormBlock | Gallery | MediaBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -725,7 +725,7 @@ export interface Gallery {
   /**
    * Specify how media is rendered
    */
-  type: 'canvas' | 'postcard' | 'tiles' | 'twoColumns';
+  type: 'canvas' | 'postcard' | 'slider' | 'tiles' | 'twoColumns';
   /**
    * If checked, the label for each link will be hidden. For example, you'd probably want to disable labels for a gallery of Instagram posts.
    */
@@ -769,19 +769,6 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaSlider".
- */
-export interface MediaSlider {
-  slides: {
-    media: number | Media;
-    id?: string | null;
-  }[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaSlider';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1074,7 +1061,6 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         gallery?: T | GallerySelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
-        mediaSlider?: T | MediaSliderSelect<T>;
       };
   meta?:
     | T
@@ -1197,20 +1183,6 @@ export interface GallerySelect<T extends boolean = true> {
  */
 export interface MediaBlockSelect<T extends boolean = true> {
   media?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaSlider_select".
- */
-export interface MediaSliderSelect<T extends boolean = true> {
-  slides?:
-    | T
-    | {
-        media?: T;
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }

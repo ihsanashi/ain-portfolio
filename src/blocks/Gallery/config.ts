@@ -21,6 +21,10 @@ export const Gallery: Block = {
           value: 'postcard',
         },
         {
+          label: 'Slider',
+          value: 'slider',
+        },
+        {
           label: 'Tiles',
           value: 'tiles',
         },

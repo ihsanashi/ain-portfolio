@@ -8,7 +8,6 @@ import { Content } from '../../blocks/Content/config';
 import { FormBlock } from '../../blocks/Form/config';
 import { Gallery } from '@/blocks/Gallery/config';
 import { MediaBlock } from '../../blocks/MediaBlock/config';
-import { MediaSlider } from '@/blocks/MediaSlider/config';
 import { hero } from '@/heros/config';
 import { slugField } from '@/fields/slug';
 import { populatePublishedAt } from '../../hooks/populatePublishedAt';
@@ -84,7 +83,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Gallery,
                 MediaBlock,
-                MediaSlider,
               ],
               required: true,
               admin: {
