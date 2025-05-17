@@ -96,6 +96,11 @@ export const Gallery: Block = {
           type: 'richText',
           editor: lexicalEditor({}),
           label: false,
+          admin: {
+            condition: (_, {}, { blockData }) => {
+              return blockData.type !== 'tiles';
+            },
+          },
         },
         link({
           overrides: {
