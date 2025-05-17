@@ -731,7 +731,7 @@ export interface Gallery {
    */
   disableLabel?: boolean | null;
   /**
-   * Determine on which side the media will be placed, and subsequently where the text content will be placed alongside it.
+   * Determine the order of the media in relation to the text content.
    */
   mediaPlacement?: ('left' | 'right') | null;
   /**

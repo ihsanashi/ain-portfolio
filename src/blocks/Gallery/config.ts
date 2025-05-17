@@ -59,7 +59,7 @@ export const Gallery: Block = {
           return blockData?.type === 'twoColumns';
         },
         description:
-          'Determine on which side the media will be placed, and subsequently where the text content will be placed alongside it.',
+          'Determine the order of the media in relation to the text content.',
       },
       type: 'radio',
       defaultValue: 'left',
