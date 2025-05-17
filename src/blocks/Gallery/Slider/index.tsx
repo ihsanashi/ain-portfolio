@@ -9,6 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { CMSLink } from '@/components/Link';
+import RichText from '@/components/RichText';
 import { Gallery } from '@/payload-types';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
@@ -29,7 +31,7 @@ export const Slider: React.FC<Gallery> = (props) => {
       <CarouselContent className="h-[400px] md:h-[500px] lg:h-[600px]">
         {content.map((slide, index) => (
           <CarouselItem
-            className="flex items-center justify-center"
+            className="relative flex items-center justify-center"
             key={index}
           >
             <Media
@@ -37,6 +39,14 @@ export const Slider: React.FC<Gallery> = (props) => {
               imgClassName="m-auto h-full w-full object-cover"
               resource={slide.media}
             />
+            {(slide.richText || slide.link) && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                {slide.richText && (
+                  <RichText className="p-5" data={slide.richText} />
+                )}
+                {slide.link?.label && <CMSLink {...slide.link} />}
+              </div>
+            )}
           </CarouselItem>
         ))}
       </CarouselContent>
