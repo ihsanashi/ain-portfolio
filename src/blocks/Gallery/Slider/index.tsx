@@ -26,7 +26,7 @@ export const Slider: React.FC<Gallery> = (props) => {
       }}
       plugins={[WheelGesturesPlugin()]}
     >
-      <CarouselContent>
+      <CarouselContent className="h-[400px] md:h-[500px] lg:h-[600px]">
         {content.map((slide, index) => (
           <CarouselItem
             className="flex items-center justify-center"
