@@ -37,12 +37,10 @@ export const Slider: React.FC<Gallery> = (props) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      {content.length > 1 && (
-        <CarouselPrevious className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
-      )}
-      {content.length > 1 && (
-        <CarouselNext className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
-      )}
+
+      <CarouselPrevious className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+
+      <CarouselNext className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
     </Carousel>
   );
 };
