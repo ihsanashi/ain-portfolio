@@ -731,10 +731,29 @@ export interface Gallery {
    */
   disableLabel?: boolean | null;
   /**
+   * Determine on which side the media will be placed, and subsequently where the text content will be placed alongside it.
+   */
+  mediaPlacement?: ('left' | 'right') | null;
+  /**
    * Specify content to display in this section
    */
   content: {
     media: number | Media;
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     link?: {
       type?: ('reference' | 'custom') | null;
       newTab?: boolean | null;
@@ -1158,10 +1177,12 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface GallerySelect<T extends boolean = true> {
   type?: T;
   disableLabel?: T;
+  mediaPlacement?: T;
   content?:
     | T
     | {
         media?: T;
+        richText?: T;
         link?:
           | T
           | {
