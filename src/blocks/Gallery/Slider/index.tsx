@@ -15,6 +15,9 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 export const Slider: React.FC<Gallery> = (props) => {
   const { content } = props;
 
+  const arrowsBaseClasses =
+    'absolute top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75';
+
   return (
     <Carousel
       className="relative mx-auto w-full"
@@ -38,9 +41,9 @@ export const Slider: React.FC<Gallery> = (props) => {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+      <CarouselPrevious className={`${arrowsBaseClasses} left-4`} />
 
-      <CarouselNext className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-100 bg-opacity-50 p-2 text-gray-800 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1" />
+      <CarouselNext className={`${arrowsBaseClasses} right-4`} />
     </Carousel>
   );
 };
