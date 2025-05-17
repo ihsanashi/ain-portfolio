@@ -1,6 +1,7 @@
 import { link } from '@/fields/link';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import type { Block } from 'payload';
+import { galleryContentValidation } from './helper';
 
 export const Gallery: Block = {
   slug: 'gallery',
@@ -106,41 +107,7 @@ export const Gallery: Block = {
           },
         }),
       ],
-      validate: (value, args) => {
-        const { siblingData }: { siblingData: any } = args;
-        console.log('data: ', { value, siblingData: args.siblingData });
-        const galleryType = siblingData?.type;
-
-        switch (galleryType) {
-          case 'canvas':
-            if (siblingData.content.length !== 6) {
-              return 'A canvas gallery should contain exactly 6 content items..';
-            }
-            break;
-          case 'postcard':
-            if (siblingData.content.length > 2) {
-              return 'A postcard gallery should contain at most 2 content items.';
-            }
-            break;
-          case 'slider':
-            if (siblingData.content.length < 3) {
-              return 'A slider should contain at least 3 content items.';
-            }
-            break;
-          case 'tiles':
-            if (siblingData.content.length < 3) {
-              return 'A tile gallery should contain at least 3 content items.';
-            }
-            break;
-          case 'twoColumns':
-            if (siblingData.content.length > 1) {
-              return 'A gallery with two columns should contain only 1 content item.';
-            }
-            break;
-        }
-
-        return true;
-      },
+      validate: galleryContentValidation,
     },
   ],
 };
