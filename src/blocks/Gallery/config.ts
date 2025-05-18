@@ -97,16 +97,52 @@ export const Gallery: Block = {
           editor: lexicalEditor({}),
           label: false,
           admin: {
-            condition: (_, {}, { blockData }) => {
-              return blockData.type !== 'tiles';
+            condition: (_, siblingData, { blockData }) => {
+              // hide for tiles gallery type
+              if (blockData.type === 'tiles') {
+                return false;
+              }
+
+              // hide for the second item in postcard gallery type
+              if (
+                blockData.type === 'postcard' &&
+                blockData.content &&
+                Array.isArray(blockData.content)
+              ) {
+                // Find the index of the current siblingData within the blockData.content array
+                const currentIndex = blockData.content.findIndex(
+                  (item) => item.id === siblingData.id,
+                );
+                return currentIndex !== 1;
+              }
+
+              return true;
             },
           },
         },
         link({
           overrides: {
             admin: {
-              condition: (_, {}, { blockData }) => {
-                return blockData?.type !== 'canvas';
+              condition: (_, siblingData, { blockData }) => {
+                // hide for canvas gallery type
+                if (blockData.type === 'canvas') {
+                  return false;
+                }
+
+                // hide for the second item in postcard gallery type
+                if (
+                  blockData.type === 'postcard' &&
+                  blockData.content &&
+                  Array.isArray(blockData.content)
+                ) {
+                  // Find the index of the current siblingData within the blockData.content array
+                  const currentIndex = blockData.content.findIndex(
+                    (item) => item.id === siblingData.id,
+                  );
+                  return currentIndex !== 1;
+                }
+
+                return true;
               },
             },
           },
