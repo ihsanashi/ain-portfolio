@@ -124,11 +124,6 @@ export const Gallery: Block = {
           overrides: {
             admin: {
               condition: (_, siblingData, { blockData }) => {
-                // hide for canvas gallery type
-                if (blockData.type === 'canvas') {
-                  return false;
-                }
-
                 // hide for the second item in postcard gallery type
                 if (
                   blockData.type === 'postcard' &&
