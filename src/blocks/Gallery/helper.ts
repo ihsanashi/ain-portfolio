@@ -1,6 +1,6 @@
 import { ArrayField, ValidateOptions } from 'payload';
 
-const CANVAS_GALLERY_LENGTH = 6;
+const CANVAS_GALLERY_LENGTH = 1;
 const POSTCARD_GALLERY_LENGTH = 2;
 const SLIDER_MINIMUM_LENGTH = 3;
 const TILES_MINIMUM_LENGTH = 3;
@@ -15,8 +15,8 @@ export const galleryContentValidation = (
 
   switch (galleryType) {
     case 'canvas':
-      if (siblingData.content.length !== CANVAS_GALLERY_LENGTH) {
-        return `A canvas gallery should contain exactly ${CANVAS_GALLERY_LENGTH} content items.`;
+      if (siblingData.content.length > CANVAS_GALLERY_LENGTH) {
+        return `A canvas gallery should contain only ${CANVAS_GALLERY_LENGTH} content item.`;
       }
       break;
     case 'postcard':
