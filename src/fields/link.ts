@@ -119,6 +119,7 @@ export const link: LinkType = ({
               return !blockData?.disableLabel;
             },
           },
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           validate: (value: any, { blockData }: any) => {
             if (
               !value &&

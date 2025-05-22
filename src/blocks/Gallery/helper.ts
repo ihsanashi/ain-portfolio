@@ -10,6 +10,7 @@ export const galleryContentValidation = (
   value: unknown,
   args: ValidateOptions<unknown, unknown, ArrayField, unknown[]>,
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { siblingData }: { siblingData: any } = args;
   const galleryType = siblingData?.type;
 
