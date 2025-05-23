@@ -3,6 +3,9 @@
 
 FROM node:23.11.1-alpine AS base
 
+# Coolify build variables
+ARG DATABASE_URI
+
 # Install dependencies only when needed
 FROM base AS deps
 
@@ -43,8 +46,6 @@ WORKDIR /app
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
-
-ENV DATABASE_URI=""
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
