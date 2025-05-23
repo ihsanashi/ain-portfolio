@@ -16,6 +16,7 @@ services:
     env_file:
       - .env
 
+  # Ensure your DATABASE_URI uses 'postgresql' as the hostname ie. postgresql://127.0.0.1:5432/your-database-name
   postgres:
     restart: always
     image: postgres:latest
@@ -28,6 +29,19 @@ services:
       POSTGRES_DB: your-database-name # THIS MUST MATCH YOUR DB NAME IN .env
       POSTGRES_HOST_AUTH_METHOD: trust
 
+  # Uncomment the following to use mongodb
+  # mongo:
+  #   image: mongo:latest
+  #   ports:
+  #     - '27017:27017'
+  #   command:
+  #     - --storageEngine=wiredTiger
+  #   volumes:
+  #     - data:/data/db
+  #   logging:
+  #     driver: none
+
 volumes:
   pgdata:
+  # data:
   node_modules:
