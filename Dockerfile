@@ -24,11 +24,9 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-RUN corepack enable pnpm
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-RUN pnpm run ci
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
