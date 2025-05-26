@@ -56,6 +56,8 @@ export default buildConfig({
           height: 900,
         },
       ],
+      collections: ['categories', 'media', 'pages', 'posts', 'users'],
+      url: process.env.NEXT_PUBLIC_SERVER_URL,
     },
   },
   // This config helps us configure global or default features that the other editors can inherit
