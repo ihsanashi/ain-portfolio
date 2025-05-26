@@ -66,7 +66,7 @@ export default buildConfig({
     },
     prodMigrations: migrations,
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Categories, Media, Pages, Posts, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
